@@ -10,7 +10,9 @@ app.use(cors({
 }))
 
 app.use(express.json({limit: "16kb"}))
-app.use(express.urlencoded({extended: true, limit:"16kb"}))
-app.use(express.static("public"))
-app.use(cookieParser())
+app.use(express.urlencoded({extended: true, limit:"16kb"}))  // nested object
+app.use(express.static("public"))  // store data(file,image etc) in server 
+app.use(cookieParser()) 
+
+
 export{ app }
