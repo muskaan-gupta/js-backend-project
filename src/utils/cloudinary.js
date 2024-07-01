@@ -4,7 +4,7 @@ import fs from "fs"    // file handling
 v2.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    api_secret: process.env.API_SECRET,
 })
 
 const uploadfile = async(filepath)=> {
@@ -15,7 +15,10 @@ const uploadfile = async(filepath)=> {
         const response=await v2.uploader.upload(filepath,{
             resource_type: "auto"
         })
-        console.log("file is uploaded", response.url);
+
+        // file has been uploaded successfull
+        //console.log("file is uploaded on cloudinary ", response.url);
+        fs.unlinkSync(filepath)
         return response;
 
     } catch (error) {
@@ -24,3 +27,4 @@ const uploadfile = async(filepath)=> {
         
     }
 }
+export {uploadfile}

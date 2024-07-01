@@ -15,4 +15,13 @@ app.use(express.static("public"))  // store data(file,image etc) in server
 app.use(cookieParser()) 
 
 
+// routes import
+import userRouter from './routes/user.rout.js'
+
+
+// routes declaration 
+app.use("/api/v1/users", userRouter)   // http://localhost:8000/api/v1/users/register
+
+
+
 export{ app }
